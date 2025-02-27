@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Nexgen Budgets</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="login_anim_videos/7.mp4" type="video/mp4">
+    </video>
+    <div class="login-container">
+        <h1>NEXGEN BUDGETS</h1>
+        <form id="loginForm">
+            <div class="e-mail">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="password-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <span class="toggle-label" onclick="togglePassword()">👁️</span>
+            </div>
+            <button type="button" class="login-btn" onclick="validateForm()">Login</button>
+        </form>
+        <div class="links">
+            <a href="forgot_password.html">Forgot Password?</a> | 
+            <a href="sign_up.html">Create Account</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            let password = document.getElementById("password");
+            password.type = password.type === "password" ? "text" : "password";
+        }
+
+        function validateForm() {
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&]).+$/; 
+            
+            if (email === "" || password === "") {
+                alert("Please fill out all fields");
+            } else if (!email.endsWith("@gmail.com")) {
+                alert("Please enter a valid Gmail address (e.g., example@gmail.com)");
+            } else if (!passwordPattern.test(password)) {
+                alert("Password must include letters, numbers, and a symbol.");
+            } else {
+                alert("Login Successful !!");
+            }
+        }
+    </script>
+</body>
+</html>
